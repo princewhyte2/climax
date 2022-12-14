@@ -1,5 +1,4 @@
 import GoogleIcon from "../public/icons/GoogleIcon";
-import Logo from "../public/icons/Logo";
 
 export default function Login() {
   return (
