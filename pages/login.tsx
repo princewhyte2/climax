@@ -5,7 +5,7 @@ export default function Login() {
     <main className="h-screen w-full">
       <div className="h-full w-full flex">
         <div className="flex-1 relative overflow-hidden h-full hidden lg:block">
-          <div className="absolute top-10 left-10">
+          <div className="absolute top-10 xl:left-24 lg:left-2">
             <img src="/Climax.png" alt="logo" className="w-full h-full" />
           </div>
           <img
@@ -13,7 +13,16 @@ export default function Login() {
             alt="login background image"
             className="w-full h-full"
           />
-          <div className="absolute"></div>
+          <div className="absolute xl:top-80 xl:left-24 lg:left-2 lg:top-60 ">
+            <p className="text-white font-bold text-[54px] xl:leading-[81px] lg:leading-[60px] ">
+              Save the Climate
+            </p>
+            <p className="xl:text-base lg:text-sm font-medium leading-6 text-white mt-2.5 w-full max-w-[424px]  ">
+              Lets talk about climate change, how to do our part and stories of
+              effects that are quite visible and we should take note of. Meet
+              fellow climate heroes and keep the earth safe together.
+            </p>
+          </div>
         </div>
 
         <div className="pb-[57px] w-full lg:max-w-[674px] h-full flex flex-col lg:justify-center items-center bg-login-bg bg-no-repeat bg-cover lg:bg-none  overflow-y-auto px-[19px] ">
