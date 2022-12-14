@@ -7,7 +7,11 @@ module.exports = {
   ],
 
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "login-bg": "url('/loginBg.png')",
+      },
+    },
   },
   plugins: [],
 };
