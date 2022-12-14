@@ -3,8 +3,9 @@ import CloseEye from "../public/icons/CloseEye";
 import GoogleIcon from "../public/icons/GoogleIcon";
 import OpenEye from "../public/icons/OpenEye";
 
-export default function Login() {
-  const [loginDetails, setLoginDetails] = useState({
+export default function Register() {
+  const [registerDetails, setRegisterDetails] = useState({
+    fullName: "",
     email: "",
     password: "",
     showPassword: false,
@@ -33,7 +34,7 @@ export default function Login() {
           </div>
         </div>
 
-        <div className="pb-[57px] w-full lg:max-w-[674px] h-full flex flex-col lg:justify-center items-center bg-login-bg bg-no-repeat bg-cover lg:bg-none  overflow-y-auto px-[19px] ">
+        <div className="pb-[57px] lg:pb-0 w-full lg:max-w-[674px] h-full flex flex-col lg:justify-center items-center bg-login-bg bg-no-repeat bg-cover lg:bg-none  overflow-y-auto px-[19px] ">
           <div className="mt-[57px] mb-10 lg:hidden ">
             <img src="/Climax.png" alt="logo" className="w-full" />
           </div>
@@ -42,8 +43,8 @@ export default function Login() {
             className="bg-white rounded-[15px] lg:rounded-none text-center lg:text-left mt-5 py-8 px-[26px] "
           >
             <div className="mb-[30px] w-full max-w-[299px] ">
-              <p className="text-[#031B13] text-[32px] font-semibold capitalize leading-[48px] mb-2.5">
-                login
+              <p className="text-[#031B13] mt-2 text-[32px] font-semibold capitalize leading-[48px] mb-2.5">
+                sign up
               </p>
               <p className="text-xs font-normal text-black leading-[18px] ">
                 Login to join the conversation on climate change and our part in
@@ -51,40 +52,52 @@ export default function Login() {
               </p>
             </div>
             <div className="mb-5">
-              <label htmlFor="">
+              <label htmlFor="fullName">
+                <p className="text-left text-xs font-normal text-black leading-[18px] capitalize">
+                  full name
+                </p>
+                <input
+                  id="fullName"
+                  type="text"
+                  name="fullName"
+                  placeholder="John Doe"
+                  className="rounded-[6px] px-4 h-[45px] mt-0.5 border border-[#CDD5E0] bg-white w-full max-w-[350px] text-xs font-normal text-black leading-[18px]  "
+                />
+              </label>
+            </div>
+            <div className="mb-5">
+              <label htmlFor="email">
                 <p className="text-left text-xs font-normal text-black leading-[18px] capitalize">
                   email address
                 </p>
                 <input
+                  id="email"
                   type="email"
                   name="email"
-                  defaultValue={"john@hello.com"}
-                  placeholder="john@hello.com"
-                  className="rounded-[6px] px-4 h-[45px] mt-0.5 border border-[#CDD5E0] bg-white w-full max-w-[350px] text-xs font-normal text-black leading-[18px] outline-none  "
+                  placeholder="johndoe@hello.com"
+                  className="rounded-[6px] px-4 h-[45px] mt-0.5 border border-[#CDD5E0] bg-white w-full max-w-[350px] text-xs font-normal text-black leading-[18px]  "
                 />
               </label>
             </div>
-            <div className="mb-10 ">
+            <div className="mb-5 ">
               <label htmlFor="password">
                 <p className="text-left text-xs font-normal text-black leading-[18px] capitalize">
                   password
                 </p>
                 <div className="flex items-center max-w-[350px] w-full border border-[#CDD5E0] rounded-[6px] mt-0.5 pr-4 ">
                   <input
-                    autoComplete="false"
-                    defaultValue={"new password"}
                     id="password"
-                    type={loginDetails.showPassword ? "text" : "password"}
+                    type={registerDetails.showPassword ? "text" : "password"}
                     name="password"
-                    placeholder="Enter your password"
+                    placeholder="........."
                     className="px-4 h-[45px] outline-none bg-transparent w-full text-xs font-normal text-black leading-[18px]  "
                   />
                   <div className="cursor-pointer ">
-                    {loginDetails.showPassword ? (
+                    {registerDetails.showPassword ? (
                       <div
                         onClick={() =>
-                          setLoginDetails({
-                            ...loginDetails,
+                          setRegisterDetails({
+                            ...registerDetails,
                             showPassword: false,
                           })
                         }
@@ -94,8 +107,8 @@ export default function Login() {
                     ) : (
                       <div
                         onClick={() =>
-                          setLoginDetails({
-                            ...loginDetails,
+                          setRegisterDetails({
+                            ...registerDetails,
                             showPassword: true,
                           })
                         }
@@ -109,7 +122,7 @@ export default function Login() {
             </div>
             <button
               type="button"
-              className="bg-[#17B657] hover:bg-transparent hover:border-[#031B13] border-2 hover:text-[#031B13] mb-[50px] h-[61px] w-full max-w-[350px] rounded-[15px] text-xs font-bold text-white leading-[18px] capitalize "
+              className="bg-[#17B657] hover:bg-transparent hover:border-[#031B13] border-2 hover:text-[#031B13] mb-[30px] h-[61px] w-full max-w-[350px] rounded-[15px] text-xs font-bold text-white leading-[18px] capitalize "
             >
               login
             </button>
