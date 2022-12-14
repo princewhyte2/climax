@@ -9,7 +9,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "login-bg": "url('/loginBg.png')",
+        "login-bg": "url('/loginBg.svg')",
+        "conva-bg": "url('/convaBg.svg')",
       },
     },
   },
