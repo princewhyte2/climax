@@ -7,7 +7,12 @@ module.exports = {
   ],
 
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "login-bg": "url('/loginBg.svg')",
+        "conva-bg": "url('/convaBg.svg')",
+      },
+    },
   },
   plugins: [],
 };
