@@ -13,24 +13,21 @@ export default function Register() {
   return (
     <main className="h-screen w-full">
       <div className="h-full w-full flex">
-        <div className="flex-1 relative overflow-hidden h-full hidden lg:block">
-          <div className="absolute top-10 xl:left-20 lg:left-2">
-            <img src="/Climax.png" alt="logo" className="w-full h-full" />
-          </div>
-          <img
-            src="/loginBg.png"
-            alt="login background image"
-            className="w-full h-full"
-          />
-          <div className="absolute xl:top-80 xl:left-20 lg:left-2 lg:top-60 ">
-            <p className="text-white font-bold text-[54px] xl:leading-[81px] lg:leading-[60px] ">
-              Save the Climate
-            </p>
-            <p className="xl:text-base lg:text-sm font-medium leading-6 text-white mt-2.5 w-full max-w-[424px]  ">
-              Lets talk about climate change, how to do our part and stories of
-              effects that are quite visible and we should take note of. Meet
-              fellow climate heroes and keep the earth safe together.
-            </p>
+        <div className="flex-1 overflow-hidden h-full hidden lg:flex justify-center py-10 px-5 xl:px-10 bg-login-bg bg-no-repeat bg-cover">
+          <div className="w-full max-w-[474px] h-full max-h-[420px] flex flex-col justify-between">
+            <div className="w-[150px] h-10  ">
+              <img src="/Climax.png" alt="logo" className="w-full h-full" />
+            </div>
+            <div className="">
+              <p className="text-white font-bold text-[54px] xl:leading-[81px] lg:leading-[60px] ">
+                Save the Climate
+              </p>
+              <p className="xl:text-base lg:text-sm font-medium leading-6 text-white mt-2.5 w-full max-w-[424px]  ">
+                Lets talk about climate change, how to do our part and stories
+                of effects that are quite visible and we should take note of.
+                Meet fellow climate heroes and keep the earth safe together.
+              </p>
+            </div>
           </div>
         </div>
 

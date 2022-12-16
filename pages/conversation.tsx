@@ -1,8 +1,20 @@
 import UploadWidget from "../components/UploadWidget";
 import ChatIcon from "../components/icon/ChatIcon";
 import LikeIcon from "../components/icon/LikeIcon";
+import { AdvancedImage } from "@cloudinary/react";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { useState } from "react";
 
 export default function Conversation() {
+  const [imageUrl, setImageUrl] = useState<string>("");
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: "felistus",
+    },
+    url: {
+      secure: true,
+    },
+  });
   return (
     <main className="h-screen w-full">
       <div className="w-full h-full">
@@ -82,7 +94,10 @@ export default function Conversation() {
 
           <div className="w-[492px] border border-[#CDD5E0] rounded-[23px] ">
             <div>
-              <UploadWidget />
+              <UploadWidget setImageUrl={setImageUrl} />
+            </div>
+            <div className="w-80 h-80 border-2 px-2">
+              <img src={imageUrl} alt="image" className="w-full h-full" />
             </div>
           </div>
         </div>
