@@ -1,15 +1,38 @@
 import { useState } from "react";
 import CloseEye from "../components/icon/CloseEye";
 import GoogleIcon from "../components/icon/GoogleIcon";
+import { signIn } from "next-auth/react";
 import OpenEye from "../components/icon/OpenEye";
+import authService from "../services/auth";
+import { useRouter } from "next/router";
 
 export default function Register() {
+  const [isLoading, setIsLoading] = useState(false);
   const [registerDetails, setRegisterDetails] = useState({
     fullName: "",
     email: "",
     password: "",
     showPassword: false,
   });
+  const router = useRouter();
+
+  const handleFormSubmit = async (e: any) => {
+    e.preventDefault();
+    if (!registerDetails.email || !registerDetails.password) return;
+    setIsLoading(true);
+    try {
+      await authService.registerUser({
+        email: registerDetails.email,
+        password: registerDetails.password,
+        name: registerDetails.fullName,
+      });
+      router.push("/login");
+    } catch (error: any) {
+      window.alert(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
     <main className="h-screen w-full">
       <div className="h-full w-full flex">
@@ -36,7 +59,7 @@ export default function Register() {
             <img src="/Climax.png" alt="logo" className="w-full" />
           </div>
           <form
-            action=""
+            onSubmit={handleFormSubmit}
             className="bg-white rounded-[15px] lg:rounded-none text-center lg:text-left mt-5 py-8 px-[26px] "
           >
             <div className="mb-[30px] w-full max-w-[299px] ">
@@ -56,6 +79,12 @@ export default function Register() {
                 <input
                   id="fullName"
                   type="text"
+                  onChange={({ target }) =>
+                    setRegisterDetails({
+                      ...registerDetails,
+                      fullName: target.value,
+                    })
+                  }
                   name="fullName"
                   placeholder="John Doe"
                   className="rounded-[6px] px-4 h-[45px] mt-0.5 border border-[#CDD5E0] bg-white w-full max-w-[350px] text-xs font-normal text-black leading-[18px]  "
@@ -71,6 +100,12 @@ export default function Register() {
                   id="email"
                   type="email"
                   name="email"
+                  onChange={({ target }) =>
+                    setRegisterDetails({
+                      ...registerDetails,
+                      email: target.value,
+                    })
+                  }
                   placeholder="johndoe@hello.com"
                   className="rounded-[6px] px-4 h-[45px] mt-0.5 border border-[#CDD5E0] bg-white w-full max-w-[350px] text-xs font-normal text-black leading-[18px]  "
                 />
@@ -86,6 +121,12 @@ export default function Register() {
                     id="password"
                     type={registerDetails.showPassword ? "text" : "password"}
                     name="password"
+                    onChange={({ target }) =>
+                      setRegisterDetails({
+                        ...registerDetails,
+                        password: target.value,
+                      })
+                    }
                     placeholder="........."
                     className="px-4 h-[45px] outline-none bg-transparent w-full text-xs font-normal text-black leading-[18px]  "
                   />
@@ -118,13 +159,16 @@ export default function Register() {
               </label>
             </div>
             <button
-              type="button"
+              disabled={isLoading}
+              type="submit"
               className="bg-[#17B657] hover:bg-transparent hover:border-[#031B13] border-2 hover:text-[#031B13] mb-[30px] h-[61px] w-full max-w-[350px] rounded-[15px] text-xs font-bold text-white leading-[18px] capitalize "
             >
-              login
+              {isLoading ? "processing..." : "register"}
             </button>
             <button
+              disabled={isLoading}
               type="button"
+              onClick={() => signIn("google", { callbackUrl: "/conversation" })}
               className="flex items-center space-x-[13px] justify-center bg-white h-[49px] w-full max-w-[350px] rounded-[10px] text-xs font-bold text-black leading-[18px] border border-[#DDDDDD]  "
             >
               <GoogleIcon />

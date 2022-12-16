@@ -1,14 +1,35 @@
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 import CloseEye from "../components/icon/CloseEye";
 import GoogleIcon from "../components/icon/GoogleIcon";
 import OpenEye from "../components/icon/OpenEye";
 
 export default function Login() {
+  const [isLoading, setIsLoading] = useState(false);
   const [loginDetails, setLoginDetails] = useState({
     email: "",
     password: "",
     showPassword: false,
   });
+
+  const handleFormSubmit = async (e: any) => {
+    e.preventDefault();
+
+    setIsLoading(true);
+    try {
+      await signIn("credentials", {
+        callbackUrl: "/conversation",
+        username: loginDetails.email,
+        password: loginDetails.password,
+      });
+    } catch (error) {
+      setIsLoading(false);
+      console.log("error is", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <main className="h-screen w-full">
       <div className="h-full w-full flex">
@@ -35,7 +56,7 @@ export default function Login() {
             <img src="/Climax.png" alt="logo" className="w-full" />
           </div>
           <form
-            action=""
+            onSubmit={handleFormSubmit}
             className="bg-white rounded-[15px] lg:rounded-none text-center lg:text-left mt-5 py-8 px-[26px] "
           >
             <div className="mb-[30px] w-full max-w-[299px] ">
@@ -53,6 +74,13 @@ export default function Login() {
                   email address
                 </p>
                 <input
+                  onChange={({ target }) =>
+                    setLoginDetails({
+                      ...loginDetails,
+                      email: target.value,
+                    })
+                  }
+                  required
                   type="email"
                   name="email"
                   autoComplete="off"
@@ -70,8 +98,15 @@ export default function Login() {
                   <input
                     autoComplete="off"
                     id="password"
+                    required
                     type={loginDetails.showPassword ? "text" : "password"}
                     name="password"
+                    onChange={({ target }) =>
+                      setLoginDetails({
+                        ...loginDetails,
+                        password: target.value,
+                      })
+                    }
                     placeholder="Enter your password"
                     className="px-4 h-[45px] outline-none bg-transparent w-full text-xs font-normal text-black leading-[18px]  "
                   />
@@ -104,12 +139,15 @@ export default function Login() {
               </label>
             </div>
             <button
-              type="button"
+              disabled={isLoading}
+              type="submit"
               className="bg-[#17B657] hover:bg-transparent hover:border-[#031B13] border-2 hover:text-[#031B13] mb-[50px] h-[61px] w-full max-w-[350px] rounded-[15px] text-xs font-bold text-white leading-[18px] capitalize "
             >
-              login
+              {isLoading ? "loading..." : "login"}
             </button>
             <button
+              disabled={isLoading}
+              onClick={() => signIn("google", { callbackUrl: "/conversation" })}
               type="button"
               className="flex items-center space-x-[13px] justify-center bg-white h-[49px] w-full max-w-[350px] rounded-[10px] text-xs font-bold text-black leading-[18px] border border-[#DDDDDD]  "
             >
