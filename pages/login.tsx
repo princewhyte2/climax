@@ -1,14 +1,35 @@
-import { useState } from "react";
-import CloseEye from "../components/icon/CloseEye";
-import GoogleIcon from "../components/icon/GoogleIcon";
-import OpenEye from "../components/icon/OpenEye";
+import { useState } from "react"
+import { signIn } from "next-auth/react"
+import CloseEye from "../components/icon/CloseEye"
+import GoogleIcon from "../components/icon/GoogleIcon"
+import OpenEye from "../components/icon/OpenEye"
 
 export default function Login() {
+  const [isLoading, setIsLoading] = useState(false)
   const [loginDetails, setLoginDetails] = useState({
     email: "",
     password: "",
     showPassword: false,
-  });
+  })
+
+  const handleFormSubmit = async (e: any) => {
+    e.preventDefault()
+
+    setIsLoading(true)
+    try {
+      await signIn("credentials", {
+        callbackUrl: "/conversation",
+        username: loginDetails.email,
+        password: loginDetails.password,
+      })
+    } catch (error) {
+      setIsLoading(false)
+      console.log("error is", error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
     <main className="h-screen w-full">
       <div className="h-full w-full flex">
@@ -16,19 +37,12 @@ export default function Login() {
           <div className="absolute top-10 xl:left-20 lg:left-2">
             <img src="/Climax.png" alt="logo" className="w-full h-full" />
           </div>
-          <img
-            src="/loginBg.png"
-            alt="login background image"
-            className="w-full h-full"
-          />
+          <img src="/loginBg.png" alt="login background image" className="w-full h-full" />
           <div className="absolute xl:top-80 xl:left-20 lg:left-2 lg:top-60 ">
-            <p className="text-white font-bold text-[54px] xl:leading-[81px] lg:leading-[60px] ">
-              Save the Climate
-            </p>
+            <p className="text-white font-bold text-[54px] xl:leading-[81px] lg:leading-[60px] ">Save the Climate</p>
             <p className="xl:text-base lg:text-sm font-medium leading-6 text-white mt-2.5 w-full max-w-[424px]  ">
-              Lets talk about climate change, how to do our part and stories of
-              effects that are quite visible and we should take note of. Meet
-              fellow climate heroes and keep the earth safe together.
+              Lets talk about climate change, how to do our part and stories of effects that are quite visible and we
+              should take note of. Meet fellow climate heroes and keep the earth safe together.
             </p>
           </div>
         </div>
@@ -38,27 +52,28 @@ export default function Login() {
             <img src="/Climax.png" alt="logo" className="w-full" />
           </div>
           <form
-            action=""
+            onSubmit={handleFormSubmit}
             className="bg-white rounded-[15px] lg:rounded-none text-center lg:text-left mt-5 py-8 px-[26px] "
           >
             <div className="mb-[30px] w-full max-w-[299px] ">
-              <p className="text-[#031B13] text-[32px] font-semibold capitalize leading-[48px] mb-2.5">
-                login
-              </p>
+              <p className="text-[#031B13] text-[32px] font-semibold capitalize leading-[48px] mb-2.5">login</p>
               <p className="text-xs font-normal text-black leading-[18px] ">
-                Login to join the conversation on climate change and our part in
-                saving the earth
+                Login to join the conversation on climate change and our part in saving the earth
               </p>
             </div>
             <div className="mb-5">
               <label htmlFor="">
-                <p className="text-left text-xs font-normal text-black leading-[18px] capitalize">
-                  email address
-                </p>
+                <p className="text-left text-xs font-normal text-black leading-[18px] capitalize">email address</p>
                 <input
+                  onChange={({ target }) =>
+                    setLoginDetails({
+                      ...loginDetails,
+                      email: target.value,
+                    })
+                  }
+                  required
                   type="email"
                   name="email"
-                  defaultValue={"john@hello.com"}
                   placeholder="john@hello.com"
                   className="rounded-[6px] px-4 h-[45px] mt-0.5 border border-[#CDD5E0] bg-white w-full max-w-[350px] text-xs font-normal text-black leading-[18px] outline-none  "
                 />
@@ -66,16 +81,20 @@ export default function Login() {
             </div>
             <div className="mb-10 ">
               <label htmlFor="password">
-                <p className="text-left text-xs font-normal text-black leading-[18px] capitalize">
-                  password
-                </p>
+                <p className="text-left text-xs font-normal text-black leading-[18px] capitalize">password</p>
                 <div className="flex items-center max-w-[350px] w-full border border-[#CDD5E0] rounded-[6px] mt-0.5 pr-4 ">
                   <input
                     autoComplete="false"
-                    defaultValue={"new password"}
                     id="password"
+                    required
                     type={loginDetails.showPassword ? "text" : "password"}
                     name="password"
+                    onChange={({ target }) =>
+                      setLoginDetails({
+                        ...loginDetails,
+                        password: target.value,
+                      })
+                    }
                     placeholder="Enter your password"
                     className="px-4 h-[45px] outline-none bg-transparent w-full text-xs font-normal text-black leading-[18px]  "
                   />
@@ -108,12 +127,15 @@ export default function Login() {
               </label>
             </div>
             <button
-              type="button"
+              disabled={isLoading}
+              type="submit"
               className="bg-[#17B657] hover:bg-transparent hover:border-[#031B13] border-2 hover:text-[#031B13] mb-[50px] h-[61px] w-full max-w-[350px] rounded-[15px] text-xs font-bold text-white leading-[18px] capitalize "
             >
-              login
+              {isLoading ? "loading..." : "login"}
             </button>
             <button
+              disabled={isLoading}
+              onClick={() => signIn("google", { callbackUrl: "/conversation" })}
               type="button"
               className="flex items-center space-x-[13px] justify-center bg-white h-[49px] w-full max-w-[350px] rounded-[10px] text-xs font-bold text-black leading-[18px] border border-[#DDDDDD]  "
             >
@@ -124,5 +146,5 @@ export default function Login() {
         </div>
       </div>
     </main>
-  );
+  )
 }
