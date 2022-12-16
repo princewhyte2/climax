@@ -9,17 +9,9 @@ import ConversationModal from "../components/ConversationModal";
 import InfoIcon from "../components/icon/InfoIcon";
 import LoginNotificationModal from "../components/LoginNotificationModal";
 import Footer from "../components/Footer";
+import Link from "next/link";
 
 export default function Conversation() {
-  // const [imageUrl, setImageUrl] = useState<string>("");
-  // const cld = new Cloudinary({
-  //   cloud: {
-  //     cloudName: "felistus",
-  //   },
-  //   url: {
-  //     secure: true,
-  //   },
-  // });
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -40,8 +32,10 @@ export default function Conversation() {
                 />
               </div>
               <div className="hidden lg:flex items-center space-x-[32px] text-base text-white font-medium leading-[19px] ">
-                <p className="capitalize">climate report</p>
-                <p>Join the Conversation</p>
+                <Link href={"/dashboard"} className="capitalize">
+                  climate report
+                </Link>
+                <Link href={"/conversation"}>Join the Conversation</Link>
                 <button
                   className="capitalize bg-[#17B657] rounded-[15px] w-[187px] h-10"
                   type="button"
@@ -61,18 +55,6 @@ export default function Conversation() {
             </div>
           </div>
         </div>
-
-        {/* error message */}
-        {/* <div className="w-full px-4 lg:px-[99px] mb-[65px]  ">
-          <div className="border-dashed border-[#1B76FF] border-2 rounded-md w-full flex space-x-2 px-5 py-7 bg-[#F1FAFF] ">
-            <InfoIcon />
-            <p className="text-base leading-6 font-bold text-[#7E8299]">
-              You are not yet logged in. To start a conversation or join a
-              converstaion, you will have to login. Click here to Login
-            </p>
-          </div>
-        </div> */}
-
         <div className="bg-white w-full ">
           <div className="w-full lg:flex lg:space-x-[80px] px-4 lg:px-[99px] mt-28 max-w-screen-2xl 2xl:mx-auto ">
             <div className="max-w-[700px] w-full pb-[57px] ">
