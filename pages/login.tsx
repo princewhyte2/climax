@@ -1,69 +1,82 @@
-import { useState } from "react"
-import { signIn } from "next-auth/react"
-import CloseEye from "../components/icon/CloseEye"
-import GoogleIcon from "../components/icon/GoogleIcon"
-import OpenEye from "../components/icon/OpenEye"
+import { useState } from "react";
+import { signIn } from "next-auth/react";
+import CloseEye from "../components/icon/CloseEye";
+import GoogleIcon from "../components/icon/GoogleIcon";
+import OpenEye from "../components/icon/OpenEye";
 
 export default function Login() {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const [loginDetails, setLoginDetails] = useState({
     email: "",
     password: "",
     showPassword: false,
-  })
+  });
 
   const handleFormSubmit = async (e: any) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    setIsLoading(true)
+    setIsLoading(true);
     try {
       await signIn("credentials", {
         callbackUrl: "/conversation",
         username: loginDetails.email,
         password: loginDetails.password,
-      })
+      });
     } catch (error) {
-      setIsLoading(false)
-      console.log("error is", error)
+      setIsLoading(false);
+      console.log("error is", error);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <main className="h-screen w-full">
-      <div className="h-full w-full flex">
-        <div className="flex-1 relative overflow-hidden h-full hidden lg:block">
-          <div className="absolute top-10 xl:left-20 lg:left-2">
-            <img src="/Climax.png" alt="logo" className="w-full h-full" />
-          </div>
-          <img src="/loginBg.png" alt="login background image" className="w-full h-full" />
-          <div className="absolute xl:top-80 xl:left-20 lg:left-2 lg:top-60 ">
-            <p className="text-white font-bold text-[54px] xl:leading-[81px] lg:leading-[60px] ">Save the Climate</p>
-            <p className="xl:text-base lg:text-sm font-medium leading-6 text-white mt-2.5 w-full max-w-[424px]  ">
-              Lets talk about climate change, how to do our part and stories of effects that are quite visible and we
-              should take note of. Meet fellow climate heroes and keep the earth safe together.
-            </p>
+      <div className="h-full w-full flex ">
+        <div className="flex-1 overflow-hidden h-full hidden lg:flex justify-center 2xl:items-center py-10 px-5 xl:px-10 bg-login-bg bg-no-repeat bg-cover">
+          <div className="w-full max-w-[474px] h-full max-h-[420px] flex flex-col justify-between">
+            <div className="w-[123px] h-10">
+              <img
+                src="/footerImage.png"
+                alt="logo"
+                className="w-full h-full"
+              />
+            </div>
+            <div className="">
+              <p className="text-white font-bold text-[54px] xl:leading-[81px] lg:leading-[60px] ">
+                Save the Climate
+              </p>
+              <p className="xl:text-base lg:text-sm font-medium leading-6 text-white mt-2.5 w-full max-w-[424px]  ">
+                Lets talk about climate change, how to do our part and stories
+                of effects that are quite visible and we should take note of.
+                Meet fellow climate heroes and keep the earth safe together.
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className="pb-[57px] w-full lg:max-w-[674px] h-full flex flex-col lg:justify-center items-center bg-login-bg bg-no-repeat bg-cover lg:bg-none  overflow-y-auto px-[19px] ">
-          <div className="mt-[57px] mb-10 lg:hidden ">
-            <img src="/Climax.png" alt="logo" className="w-full" />
+        <div className="pb-[57px] w-full lg:max-w-[674px] h-full flex flex-col lg:justify-center items-center bg-login-bg bg-no-repeat bg-cover lg:bg-none overflow-y-auto px-[19px] ">
+          <div className="w-[123px] h-10 mt-[57px] mb-10 lg:hidden ">
+            <img src="/footerImage.png" alt="logo" className="w-full h-full" />
           </div>
           <form
             onSubmit={handleFormSubmit}
             className="bg-white rounded-[15px] lg:rounded-none text-center lg:text-left mt-5 py-8 px-[26px] "
           >
             <div className="mb-[30px] w-full max-w-[299px] ">
-              <p className="text-[#031B13] text-[32px] font-semibold capitalize leading-[48px] mb-2.5">login</p>
+              <p className="text-[#031B13] text-[32px] font-semibold capitalize leading-[48px] mb-2.5">
+                login
+              </p>
               <p className="text-xs font-normal text-black leading-[18px] ">
-                Login to join the conversation on climate change and our part in saving the earth
+                Login to join the conversation on climate change and our part in
+                saving the earth
               </p>
             </div>
             <div className="mb-5">
               <label htmlFor="">
-                <p className="text-left text-xs font-normal text-black leading-[18px] capitalize">email address</p>
+                <p className="text-left text-xs font-normal text-black leading-[18px] capitalize">
+                  email address
+                </p>
                 <input
                   onChange={({ target }) =>
                     setLoginDetails({
@@ -74,17 +87,20 @@ export default function Login() {
                   required
                   type="email"
                   name="email"
+                  autoComplete="off"
                   placeholder="john@hello.com"
-                  className="rounded-[6px] px-4 h-[45px] mt-0.5 border border-[#CDD5E0] bg-white w-full max-w-[350px] text-xs font-normal text-black leading-[18px] outline-none  "
+                  className="rounded-[6px] px-4 h-[45px] mt-0.5 border border-[#CDD5E0] bg-transparent w-full max-w-[350px] text-xs font-normal text-black leading-[18px] outline-none  "
                 />
               </label>
             </div>
             <div className="mb-10 ">
               <label htmlFor="password">
-                <p className="text-left text-xs font-normal text-black leading-[18px] capitalize">password</p>
+                <p className="text-left text-xs font-normal text-black leading-[18px] capitalize">
+                  password
+                </p>
                 <div className="flex items-center max-w-[350px] w-full border border-[#CDD5E0] rounded-[6px] mt-0.5 pr-4 ">
                   <input
-                    autoComplete="false"
+                    autoComplete="off"
                     id="password"
                     required
                     type={loginDetails.showPassword ? "text" : "password"}
@@ -146,5 +162,5 @@ export default function Login() {
         </div>
       </div>
     </main>
-  )
+  );
 }
