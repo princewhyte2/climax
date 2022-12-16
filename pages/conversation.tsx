@@ -1,3 +1,4 @@
+import UploadWidget from "../components/UploadWidget";
 import ChatIcon from "../public/icons/ChatIcon";
 import LikeIcon from "../public/icons/LikeIcon";
 
@@ -80,7 +81,9 @@ export default function Conversation() {
           </div>
 
           <div className="w-[492px] border border-[#CDD5E0] rounded-[23px] ">
-            <div>asksjka</div>
+            <div>
+              <UploadWidget />
+            </div>
           </div>
         </div>
       </div>
