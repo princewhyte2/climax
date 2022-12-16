@@ -1,7 +1,7 @@
 import { useState } from "react";
-import CloseEye from "../public/icons/CloseEye";
-import GoogleIcon from "../public/icons/GoogleIcon";
-import OpenEye from "../public/icons/OpenEye";
+import CloseEye from "../components/icon/CloseEye";
+import GoogleIcon from "../components/icon/GoogleIcon";
+import OpenEye from "../components/icon/OpenEye";
 
 export default function Login() {
   const [loginDetails, setLoginDetails] = useState({

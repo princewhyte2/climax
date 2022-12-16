@@ -1,6 +1,6 @@
 import UploadWidget from "../components/UploadWidget";
-import ChatIcon from "../public/icons/ChatIcon";
-import LikeIcon from "../public/icons/LikeIcon";
+import ChatIcon from "../components/icon/ChatIcon";
+import LikeIcon from "../components/icon/LikeIcon";
 
 export default function Conversation() {
   return (
