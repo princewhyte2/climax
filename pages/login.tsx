@@ -32,8 +32,8 @@ export default function Login() {
 
   return (
     <main className="h-screen w-full">
-      <div className="h-full w-full flex">
-        <div className="flex-1 overflow-hidden h-full hidden lg:flex justify-center py-10 px-5 xl:px-10 bg-login-bg bg-no-repeat bg-cover">
+      <div className="h-full w-full flex ">
+        <div className="flex-1 overflow-hidden h-full hidden lg:flex justify-center 2xl:items-center py-10 px-5 xl:px-10 bg-login-bg bg-no-repeat bg-cover">
           <div className="w-full max-w-[474px] h-full max-h-[420px] flex flex-col justify-between">
             <div className="w-[150px] h-10  ">
               <img src="/Climax.png" alt="logo" className="w-full h-full" />
@@ -51,7 +51,7 @@ export default function Login() {
           </div>
         </div>
 
-        <div className="pb-[57px] w-full lg:max-w-[674px] h-full flex flex-col lg:justify-center items-center bg-login-bg bg-no-repeat bg-cover lg:bg-none  overflow-y-auto px-[19px] ">
+        <div className="pb-[57px] w-full lg:max-w-[674px] h-full flex flex-col lg:justify-center items-center bg-login-bg bg-no-repeat bg-cover lg:bg-none overflow-y-auto px-[19px] ">
           <div className="mt-[57px] mb-10 lg:hidden ">
             <img src="/Climax.png" alt="logo" className="w-full" />
           </div>
