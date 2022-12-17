@@ -19,12 +19,13 @@ const post = async (req: NextApiRequest, res: NextApiResponse) => {
     
     try {
       const post = await client.post.create({
-      data: {
-    content,
+        data: {
+        //@ts-ignore
+          content,
           previewImage,
           title,
           authorId
-  },
+  }
       }) 
       pusherServer.trigger("my-channel", "my-event", {
   message: "hello world"
