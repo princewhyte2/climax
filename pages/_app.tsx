@@ -3,17 +3,18 @@ import "../styles/globals.css"
 import { AppProps } from "next/app"
 import { useEffect } from "react"
 import Pusher from "pusher-js"
-
+import { useSWRConfig } from "swr"
 import runOneSignal from "../services/onesignal"
 import { SessionProvider } from "next-auth/react"
 import useClimaxStores from "../lib/store"
 
 export default function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+  const { mutate } = useSWRConfig()
   const setPusher = useClimaxStores((state: any) => state.setPusher)
   const pusher = useClimaxStores((state: any) => state.pusher)
   const setChannel = useClimaxStores((state: any) => state.setChannel)
   const channel = useClimaxStores((state: any) => state.channel)
-  const test = useClimaxStores((state: any) => state.test)
+
   useEffect(() => {
     runOneSignal()
   }, [])
@@ -29,11 +30,11 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
     setChannel(pusher?.subscribe("my-channel"))
   }, [pusher])
 
-  useEffect(() => {
-    channel?.bind("my-event", function (data: any) {
-      alert(JSON.stringify(data))
-    })
-  }, [channel])
+  // useEffect(() => {
+  //   channel?.bind("my-event", function (data: any) {
+  //     mutate("/posts")
+  //   })
+  // }, [channel])
 
   return (
     <>
