@@ -1,9 +1,14 @@
 import Image from "next/image";
+import { useState } from "react";
+import CarbonCalculationModal from "../components/CarbonCalculationModal";
 import Footer from "../components/Footer";
 import ArrowRight from "../components/icon/ArrowRight";
 import Navigation from "../components/Navigation";
 
 export default function Dashboard() {
+  const [open, setOpen] = useState(false);
+
+  const openCarbonCalc = () => setOpen(true);
   return (
     <main className="h-screen w-full">
       <Navigation />
@@ -44,6 +49,7 @@ export default function Dashboard() {
                 See how much carbon you are generating{" "}
               </p>
               <button
+                onClick={openCarbonCalc}
                 type="button"
                 className="bg-white text-black text-xs font-bold capitalize w-[187px] h-10 rounded-[10px] "
               >
@@ -108,6 +114,7 @@ export default function Dashboard() {
       <div className="bg-[#031B13] w-full">
         <Footer />
       </div>
+      <CarbonCalculationModal open={open} setOpen={setOpen} />
     </main>
   );
 }
