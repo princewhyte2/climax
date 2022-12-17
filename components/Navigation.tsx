@@ -5,9 +5,9 @@ import TotalReportPie from "./TotalReportPie";
 
 export default function Navigation() {
   return (
-    <div className="w-full xl:h-[600px] bg-conva-bg bg-no-repeat bg-cover mb-[35px] relative  ">
+    <div className="w-full">
       <div className="w-full h-full max-w-screen-2xl 2xl:mx-auto pb-28 ">
-        <div className="flex justify-between items-center w-full lg:px-[99px] p-[17px] lg:pt-[10px] mb-[100px] space-x-[300px]  ">
+        {/* <div className="flex justify-between items-center w-full lg:px-[99px] p-[17px] lg:pt-[10px] mb-[100px] space-x-[300px]  ">
           <Link href={"/"} className="w-[120px] h-[120px]">
             <img src="/icons/climax.svg" alt="logo" className="w-full h-full" />
           </Link>
@@ -26,17 +26,17 @@ export default function Navigation() {
               Login
             </button>
           </div>
-        </div>
+        </div> */}
 
-        <div className="text-white text-center w-full">
+        {/* <div className="text-white text-center w-full">
           <p className="font-bold text-2xl lg:text-[54px] lg:leading-[81px] lg:mb-5">
             Climate Report
           </p>
           <p className="text-base font-semibold leading-6">
             Report of climate changes and the effects.
           </p>
-        </div>
-        <div className="bg-white hidden xl:block shadow-2xl w-[1166px] h-[600px] py-[35px] px-[79px] mt-[107px] absolute left-0 right-0 mx-auto ">
+        </div> */}
+        <div className="bg-white hidden xl:block shadow-2xl w-[1166px] h-[600px] py-[35px] px-[79px] absolute left-0 right-0 mx-auto ">
           <p className="font-bold capitalize text-[32px] leading-[48px] text-black px-10">
             world carbon emission rate
           </p>

@@ -16,6 +16,8 @@ import Link from "next/link";
 import useClimaxStores from "../lib/store";
 import postService from "../services/posts";
 import PrimaryButton from "../components/button/PrimaryButton";
+import PageNav from "../components/nav/Nav";
+import ContainerWrapper from "../components/wrapper/Container";
 
 const outSource = [
   {
@@ -72,37 +74,18 @@ export default function Conversation() {
     <main className="h-screen w-full">
       <div className="w-full h-full ">
         <div className="w-full h-fit bg-conva-bg bg-no-repeat bg-cover mb-[35px]  ">
-          <div className="w-full h-full max-w-screen-2xl 2xl:mx-auto pb-28 ">
-            <div className="flex justify-between items-center w-full lg:px-[99px] p-[17px] lg:pt-[10px] mb-[100px] space-x-[300px]  ">
-              <Link href={"/"} className="w-[120px] h-[120px]">
-                <img
-                  src="/icons/climax.svg"
-                  alt="logo"
-                  className="w-full h-full"
-                />
-              </Link>
-              <div className="hidden lg:flex items-center space-x-[32px] text-base text-white font-medium leading-[19px] ">
-                <Link href={"/eco-shop"} className="capitalize">
-                  Shop
-                </Link>
-                <Link href={"/climate-report"} className="capitalize">
-                  climate report
-                </Link>
-                <Link href={"/conversation"}>Join the Conversation</Link>
-                <Link href={"/login"}>
-                  <PrimaryButton>Login</PrimaryButton>
-                </Link>
+          <div className="hero w-full min-h-[600px] h-[60vh] bg-[#031B13] p-[20px] bg-[url(/bg.jpg)] bg-blend-screen bg-center bg-cover bg-no-repeat  ">
+            <ContainerWrapper>
+              <PageNav />
+              <div className="text-content h-[90%]  flex flex-col gap-[40px] text-white items-center justify-center text-center ">
+                <h1 className="text-white font-bold text-[40px]">
+                  Join the Conversation
+                </h1>
+                <p className="text-white max-w-[450px] mb-[20px] leading-[170%] text-[16px]">
+                  Report of climate changes and the effects.
+                </p>
               </div>
-            </div>
-
-            <div className="text-white text-center w-full">
-              <p className="font-bold text-2xl lg:text-[54px] lg:leading-[81px] lg:mb-5">
-                Join the Conversation
-              </p>
-              <p className="text-base font-semibold leading-6">
-                Report of climate changes and the effects.
-              </p>
-            </div>
+            </ContainerWrapper>
           </div>
         </div>
         <div className="bg-white w-full ">
@@ -113,7 +96,6 @@ export default function Conversation() {
                   recent
                 </p>
                 <button
-                  // onClick={openConversationModal}
                   onClick={
                     status === "authenticated"
                       ? openConversationModal

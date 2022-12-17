@@ -5,8 +5,10 @@ import CarbonResult from "../components/CarbonResult";
 import EmmissionChart from "../components/EmissionChart";
 import Footer from "../components/Footer";
 import ArrowRight from "../components/icon/ArrowRight";
+import PageNav from "../components/nav/Nav";
 import Navigation from "../components/Navigation";
 import TotalReportPie from "../components/TotalReportPie";
+import ContainerWrapper from "../components/wrapper/Container";
 
 export default function Dashboard() {
   const [open, setOpen] = useState(false);
@@ -15,16 +17,32 @@ export default function Dashboard() {
   const openCarbonCalc = () => setOpen(true);
   return (
     <main className="h-screen w-full">
-      <Navigation />
+      {/* <Navigation /> */}
+      <div className="w-full h-fit bg-conva-bg bg-no-repeat bg-cover mb-[35px]  ">
+        <div className="hero w-full min-h-[600px] h-[60vh] bg-[#031B13] p-[20px] bg-[url(/bg.jpg)] bg-blend-screen bg-center bg-cover bg-no-repeat  ">
+          <ContainerWrapper>
+            <PageNav />
+            <div className="text-content h-[90%]  flex flex-col gap-[40px] text-white items-center justify-center text-center ">
+              <h1 className="text-white font-bold text-[40px]">
+                Climate Report
+              </h1>
+              <p className="text-white max-w-[450px] mb-[20px] leading-[170%] text-[16px]">
+                Report of climate changes and the effects.
+              </p>
+            </div>
+          </ContainerWrapper>
+        </div>
+        <Navigation />
+      </div>
       <div className="bg-white xl:hidden xl:shadow-2xl mb-10 xl:mb-0 py-[35px] lg:px-[79px] px-4 ">
         <p className="font-bold capitalize text-[32px] mb-1 leading-[48px] text-black px-10">
           world carbon emission rate
         </p>
-        <div className="flex flex-col lg:flex-row overflow-x-auto">
+        <div className="flex flex-col lg:flex-row ">
           <div className="hidden lg:block">
             <EmmissionChart />
           </div>
-          <div>
+          <div className="bg-red-900">
             <p className="px-10 capitalize text-black font-bold text-xl">
               total emission:{" "}
               <span className="text-red-600 font-semibold ">
