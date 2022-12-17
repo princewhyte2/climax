@@ -1,12 +1,36 @@
-import { Dialog, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react"
+import { Fragment, useState } from "react"
+import { useSession } from "next-auth/react"
+import UploadWidget from "./UploadWidget"
+import postService from "../services/posts"
 
 export type ModalProps = {
-  open: boolean;
-  setOpen: (state: boolean) => void;
-};
+  open: boolean
+  setOpen: (state: boolean) => void
+}
 export default function ConversationModal({ open, setOpen }: ModalProps) {
-  const closeModal = () => setOpen(false);
+  const closeModal = () => setOpen(false)
+  const { data: session, status } = useSession()
+
+  const [isLoading, setIsLoading] = useState(false)
+
+  const [content, setContent] = useState("")
+  const [title, setTitle] = useState("")
+  const [coverImage, setCoverImage] = useState("")
+
+  const handleUpload = async () => {
+    if (!title || !content) return
+    setIsLoading(true)
+    try {
+      await postService.addPost({ title, content, previewImage: coverImage, authorId: session?.user?.email })
+      setCoverImage("")
+      closeModal()
+    } catch (error) {
+      alert("something went wrong")
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   return (
     <>
@@ -42,22 +66,15 @@ export default function ConversationModal({ open, setOpen }: ModalProps) {
                   >
                     Start Conversation
                   </Dialog.Title>
-                  <div className="mb-[42px] ">
-                    <p className="text-xs font-normal text-black ">
-                      Login to join the conversation on climate change and our
-                      part in saving the earth
-                    </p>
-                  </div>
 
                   <div className="mb-[29px] ">
                     <label htmlFor="title">
-                      <p className="font-normal text-xs mb-0.5 text-black capitalize">
-                        title
-                      </p>
+                      <p className="font-normal text-xs mb-0.5 text-black capitalize">title</p>
                       <input
                         type="text"
                         name="title"
                         id="title"
+                        onChange={({ target }) => setTitle(target.value)}
                         placeholder="World on Fire Over?"
                         className="focus:border-2 border rounded-md h-[45px] w-full px-5 text-black text-xs font-normal border-[#CDD5E0] bg-transparent focus:outline focus:outline-[#17B657]"
                       />
@@ -66,19 +83,31 @@ export default function ConversationModal({ open, setOpen }: ModalProps) {
 
                   <div>
                     <label htmlFor="title">
-                      <p className="font-normal text-xs mb-0.5 text-black capitalize">
-                        body
-                      </p>
-                      <textarea className="py-3 focus:border-2 border rounded-md h-24 w-full px-5 text-black text-xs font-normal border-[#CDD5E0] bg-transparent focus:outline focus:outline-[#17B657]"></textarea>
+                      <p className="font-normal text-xs mb-0.5 text-black capitalize">body</p>
+                      <textarea
+                        onChange={({ target }) => setContent(target.value)}
+                        className="py-3 focus:border-2 border rounded-md h-24 w-full px-5 text-black text-xs font-normal border-[#CDD5E0] bg-transparent focus:outline focus:outline-[#17B657]"
+                      ></textarea>
                     </label>
+                  </div>
+                  <div>
+                    {coverImage ? (
+                      <div className="w-full max-h-48 overflow-hidden">
+                        <img src={coverImage} alt="feature" className=" h-auto block w-full" />
+                      </div>
+                    ) : (
+                      <UploadWidget setImageUrl={setCoverImage} />
+                    )}
                   </div>
                   <div className="mt-4">
                     <button
+                      disabled={isLoading}
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-[#17B657] capitalize px-4 py-2 text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
                       // onClick={closeModal}
+                      onClick={handleUpload}
                     >
-                      post conversation
+                      {isLoading ? "posting..." : "post conversation"}
                     </button>
                   </div>
                 </Dialog.Panel>
@@ -88,5 +117,5 @@ export default function ConversationModal({ open, setOpen }: ModalProps) {
         </Dialog>
       </Transition>
     </>
-  );
+  )
 }

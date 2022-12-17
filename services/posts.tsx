@@ -5,7 +5,12 @@ const getAllPost = async () => {
   return response.data
 }
 
-const addPost = async (data: { content: any; title: string; previewImage?: string; authorId: string }) => {
+const addPost = async (data: {
+  content: any
+  title: string
+  previewImage?: string
+  authorId: string | null | undefined
+}) => {
   const response = await axios.post("api/post", data)
   return response.data
 }
