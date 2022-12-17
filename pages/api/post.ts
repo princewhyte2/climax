@@ -15,16 +15,24 @@ const post = async (req: NextApiRequest, res: NextApiResponse) => {
   useTLS: true
 })
   if (req.method === 'POST') {
-    const { previewImage, content,title,authorId } = req.body as Post
+    const { previewImage, content, title, authorId } = req.body as Post
+    
+   
     
     try {
+     const user = await client.user.findUnique({
+  where: {
+    email: authorId,
+  },
+})
       const post = await client.post.create({
         data: {
         //@ts-ignore
           content,
           previewImage,
           title,
-          authorId
+          authorId: user.id,
+          likes:1
   }
       }) 
       pusherServer.trigger("my-channel", "my-event", {
@@ -33,6 +41,7 @@ const post = async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(200).json(post)
     
     } catch (error) {
+      console.log(error)
       res.status(404).json({ error: 'Something went wrong' })
     }
 
@@ -51,14 +60,10 @@ const post = async (req: NextApiRequest, res: NextApiResponse) => {
         }
         
       })
-            pusherServer.trigger("my-channel", "my-event", {
-  message: "hello world"
-});
+
      res.status(200).json(posts)
     } catch (error) {
-            pusherServer.trigger("my-channel", "my-event", {
-  message: "hello world"
-            });
+    
       res.status(404).json({ error: 'Something went wrong' })
     }
     
