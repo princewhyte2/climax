@@ -30,7 +30,8 @@ export default function HomePage() {
             </p>
             <PrimaryButton
               className="w-full max-w-[350px]"
-              onClick={handleNavigate("dashboard")}>
+              onClick={handleNavigate("climate-report")}
+            >
               See Climate Report
             </PrimaryButton>
           </div>
@@ -38,7 +39,8 @@ export default function HomePage() {
       </div>
       <div
         className="body-content flex-1 mt-[40px]  w-full 
-      ">
+      "
+      >
         <ContainerWrapper>
           <div className="flex  [@media(max-width:600px)]:flex-col gap-[30px] justify-center items-center ">
             <Image

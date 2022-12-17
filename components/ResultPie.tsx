@@ -8,13 +8,13 @@ const data = [
 ];
 const COLORS = ["#FEBD38", "#FE464B", "#A08CFB"];
 
-export default function TotalReportPie() {
+export default function ResultPie() {
   return (
-    <PieChart width={500} height={400}>
+    <PieChart width={500} height={300}>
       <Pie
         data={data}
-        cx={250}
-        // cy={250}
+        cx={220}
+        cy={120}
         innerRadius={50}
         outerRadius={100}
         fill="#8884d8"
