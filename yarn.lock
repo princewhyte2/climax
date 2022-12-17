@@ -2942,8 +2942,6 @@ prisma@^4.7.1:
   dependencies:
     "@prisma/engines" "4.7.1"
 
-<<<<<<< HEAD
-=======
 prosemirror-model@^1.0.0, prosemirror-model@^1.16.0:
   version "1.18.3"
   resolved "https://registry.yarnpkg.com/prosemirror-model/-/prosemirror-model-1.18.3.tgz#d1026a78cff928fd600e90d87cf7d162e0a4e3fd"
@@ -2976,7 +2974,6 @@ prosemirror-view@^1.27.0, prosemirror-view@^1.28.2:
     prosemirror-state "^1.0.0"
     prosemirror-transform "^1.1.0"
 
->>>>>>> f298dd1a31f00b067adc77b04d754395184ef770
 proxy-from-env@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/proxy-from-env/-/proxy-from-env-1.1.0.tgz#e102f16ca355424865755d2c9e8ea4f24d58c3e2"
