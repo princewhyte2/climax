@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import EmmissionChart from "./EmissionChart";
+import TotalReportPie from "./TotalReportPie";
 
 export default function Navigation() {
   return (
@@ -35,22 +37,18 @@ export default function Navigation() {
           <p className="font-bold capitalize text-[32px] leading-[48px] text-black px-10">
             world carbon emission rate
           </p>
-          <div className="flex">
+          <div className="flex pt-10">
             <div className="">
-              <Image
-                src={"/barChart.png"}
-                alt="barchart"
-                width={500}
-                height={500}
-              />
+              <EmmissionChart />
             </div>
-            <div>
-              <Image
-                src={"/pieChart.png"}
-                alt="barchart"
-                width={500}
-                height={500}
-              />
+            <div className="">
+              <p className="px-10 capitalize text-black font-bold text-xl">
+                total emission:{" "}
+                <span className="text-red-600 font-semibold ">
+                  300,500 tonnes
+                </span>
+              </p>
+              <TotalReportPie />
             </div>
           </div>
         </div>

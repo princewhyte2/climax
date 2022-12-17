@@ -1,9 +1,11 @@
 import Image from "next/image";
 import { useState } from "react";
 import CarbonCalculationModal from "../components/CarbonCalculationModal";
+import EmmissionChart from "../components/EmissionChart";
 import Footer from "../components/Footer";
 import ArrowRight from "../components/icon/ArrowRight";
 import Navigation from "../components/Navigation";
+import TotalReportPie from "../components/TotalReportPie";
 
 export default function Dashboard() {
   const [open, setOpen] = useState(false);
@@ -13,25 +15,21 @@ export default function Dashboard() {
     <main className="h-screen w-full">
       <Navigation />
       <div className="bg-white xl:hidden xl:shadow-2xl mb-10 xl:mb-0 py-[35px] lg:px-[79px] px-4 ">
-        <p className="font-bold capitalize text-[32px] leading-[48px] text-black px-10">
+        <p className="font-bold capitalize text-[32px] mb-1 leading-[48px] text-black px-10">
           world carbon emission rate
         </p>
-        <div className="flex flex-col lg:flex-row">
-          <div className="">
-            <Image
-              src={"/barChart.png"}
-              alt="barchart"
-              width={500}
-              height={500}
-            />
+        <div className="flex flex-col lg:flex-row overflow-x-auto">
+          <div className="hidden lg:block">
+            <EmmissionChart />
           </div>
           <div>
-            <Image
-              src={"/pieChart.png"}
-              alt="barchart"
-              width={500}
-              height={500}
-            />
+            <p className="px-10 capitalize text-black font-bold text-xl">
+              total emission:{" "}
+              <span className="text-red-600 font-semibold ">
+                300,500 tonnes
+              </span>
+            </p>
+            <TotalReportPie />
           </div>
         </div>
       </div>
