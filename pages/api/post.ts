@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import client from '../../lib/prismadb'
 import Pusher from 'pusher'
 import pusherServer from '../../lib/pusherServer'
+import { Post } from '@prisma/client'
 
 const post = async (req: NextApiRequest, res: NextApiResponse) => {
   
@@ -14,13 +15,15 @@ const post = async (req: NextApiRequest, res: NextApiResponse) => {
   useTLS: true
 })
   if (req.method === 'POST') {
-    const { previewImage, content,title,authorId } = req.body
+    const { previewImage, content,title,authorId } = req.body as Post
     
     try {
       const post = await client.post.create({
       data: {
     content,
-   previewImage,title,authorId
+          previewImage,
+          title,
+          authorId
   },
       }) 
       pusherServer.trigger("my-channel", "my-event", {
