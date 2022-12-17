@@ -2,12 +2,37 @@ import Head from "next/head"
 import "../styles/globals.css"
 import { AppProps } from "next/app"
 import { useEffect } from "react"
-import runOneSignal from "../services/onesignal"
+import Pusher from "pusher-js"
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+import runOneSignal from "../services/onesignal"
+import { SessionProvider } from "next-auth/react"
+import useClimaxStores from "../lib/store"
+
+export default function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+  const setPusher = useClimaxStores((state: any) => state.setPusher)
+  const pusher = useClimaxStores((state: any) => state.pusher)
+  const setChannel = useClimaxStores((state: any) => state.setChannel)
+  const channel = useClimaxStores((state: any) => state.channel)
+  const test = useClimaxStores((state: any) => state.test)
   useEffect(() => {
     runOneSignal()
   }, [])
+
+  useEffect(() => {
+    setPusher(
+      new Pusher("fbc75136973291e9f2cc", {
+        cluster: "eu",
+      }),
+    )
+    setChannel(pusher?.subscribe("my-channel"))
+    channel?.bind("my-event", function (data: any) {
+      alert(JSON.stringify(data))
+    })
+  }, [])
+  useEffect(() => {
+    console.log("tes", test)
+  }, [])
+
   return (
     <>
       <Head>
@@ -27,7 +52,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#317EFB" />
       </Head>
-      <Component {...pageProps} />
+      <SessionProvider session={session}>
+        <Component {...pageProps} />
+      </SessionProvider>
     </>
   )
 }
