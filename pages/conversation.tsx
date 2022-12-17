@@ -15,6 +15,7 @@ import Footer from "../components/Footer";
 import Link from "next/link";
 import useClimaxStores from "../lib/store";
 import postService from "../services/posts";
+import PrimaryButton from "../components/button/PrimaryButton";
 
 const outSource = [
   {
@@ -72,25 +73,25 @@ export default function Conversation() {
       <div className="w-full h-full ">
         <div className="w-full h-fit bg-conva-bg bg-no-repeat bg-cover mb-[35px]  ">
           <div className="w-full h-full max-w-screen-2xl 2xl:mx-auto pb-28 ">
-            <div className="flex justify-between items-center w-full lg:px-[99px] p-[17px] lg:pt-[70px] mb-[100px] space-x-[300px]  ">
-              <div className="w-[123px] h-10">
+            <div className="flex justify-between items-center w-full lg:px-[99px] p-[17px] lg:pt-[10px] mb-[100px] space-x-[300px]  ">
+              <Link href={"/"} className="w-[120px] h-[120px]">
                 <img
-                  src="/footerImage.png"
+                  src="/icons/climax.svg"
                   alt="logo"
                   className="w-full h-full"
                 />
-              </div>
+              </Link>
               <div className="hidden lg:flex items-center space-x-[32px] text-base text-white font-medium leading-[19px] ">
-                <Link href={"/dashboard"} className="capitalize">
+                <Link href={"/eco-shop"} className="capitalize">
+                  Shop
+                </Link>
+                <Link href={"/climate-report"} className="capitalize">
                   climate report
                 </Link>
                 <Link href={"/conversation"}>Join the Conversation</Link>
-                <button
-                  className="capitalize bg-[#17B657] rounded-[15px] w-[187px] h-10"
-                  type="button"
-                >
-                  donate
-                </button>
+                <Link href={"/login"}>
+                  <PrimaryButton>Login</PrimaryButton>
+                </Link>
               </div>
             </div>
 

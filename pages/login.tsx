@@ -36,13 +36,13 @@ export default function Login() {
       <div className="h-full w-full flex ">
         <div className="flex-1 overflow-hidden h-full hidden lg:flex justify-center 2xl:items-center py-10 px-5 xl:px-10 bg-login-bg bg-no-repeat bg-cover">
           <div className="w-full max-w-[474px] h-full max-h-[420px] flex flex-col justify-between">
-            <div className="w-[123px] h-10">
+            <Link href={"/"} className="w-[120px] h-[120px]">
               <img
-                src="/footerImage.png"
+                src="/icons/climax.svg"
                 alt="logo"
                 className="w-full h-full"
               />
-            </div>
+            </Link>
             <div className="">
               <p className="text-white font-bold text-[54px] xl:leading-[81px] lg:leading-[60px] ">
                 Save the Climate
