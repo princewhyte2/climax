@@ -52,7 +52,10 @@ const post = async (req: NextApiRequest, res: NextApiResponse) => {
 });
      res.status(200).json(posts)
     } catch (error) {
-      
+            pusherServer.trigger("my-channel", "my-event", {
+  message: "hello world"
+            });
+      res.status(404).json({ error: 'Something went wrong' })
     }
     
   }

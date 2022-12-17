@@ -24,14 +24,16 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
         cluster: "eu",
       }),
     )
+  }, [])
+  useEffect(() => {
     setChannel(pusher?.subscribe("my-channel"))
+  }, [pusher])
+
+  useEffect(() => {
     channel?.bind("my-event", function (data: any) {
       alert(JSON.stringify(data))
     })
-  }, [])
-  useEffect(() => {
-    console.log("tes", test)
-  }, [])
+  }, [channel])
 
   return (
     <>
