@@ -60,15 +60,16 @@ model VerificationToken {
 }
 
 model Post {
-  id         String    @id @default(auto()) @map("_id") @db.ObjectId
-  authorId   String
-  author     User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  title      String
-  content    Json
-  created_at DateTime  @default(now())
-  updated_at DateTime  @updatedAt
-  comments   Comment[]
-  likes      Int
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  authorId     String
+  author       User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  title        String
+  previewImage String?
+  content      Json
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  comments     Comment[]
+  likes        Int
 }
 
 model Comment {
