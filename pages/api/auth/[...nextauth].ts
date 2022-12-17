@@ -15,32 +15,32 @@ export default NextAuth({
         timeout: 40000,
       },
     }),
-    CredentialsProvider({
-    name: "Credentials",
-    credentials: {
-      username: { label: "Username", type: "text", placeholder: "jsmith" },
-      password: { label: "Password", type: "password" }
-    },
-    async authorize(credentials, req) {
+  //   CredentialsProvider({
+  //   name: "Credentials",
+  //   credentials: {
+  //     username: { label: "Username", type: "text", placeholder: "jsmith" },
+  //     password: { label: "Password", type: "password" }
+  //   },
+  //   async authorize(credentials, req) {
       
-      const user:User|null = await prisma.user.findUnique({
-        where: {
-          email: credentials?.username,
+  //     const user:User|null = await prisma.user.findUnique({
+  //       where: {
+  //         email: credentials?.username,
          
-        }
-      })
-      if (user && user.password === credentials?.password) {
+  //       }
+  //     })
+  //     if (user && user.password === credentials?.password) {
       
-        // Any object returned will be saved in `user` property of the JWT
-        return user
-      } else {
+  //       // Any object returned will be saved in `user` property of the JWT
+  //       return user
+  //     } else {
         
-        return null
+  //       return null
 
        
-      }
-    }
-  })
+  //     }
+  //   }
+  // })
   ],
    pages: {
     signIn: "/login",
