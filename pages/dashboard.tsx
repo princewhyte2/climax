@@ -12,7 +12,7 @@ export default function Dashboard() {
   return (
     <main className="h-screen w-full">
       <Navigation />
-      <div className="bg-white xl:hidden shadow-2xl py-[35px] lg:px-[79px] px-4 ">
+      <div className="bg-white xl:hidden xl:shadow-2xl mb-10 xl:mb-0 py-[35px] lg:px-[79px] px-4 ">
         <p className="font-bold capitalize text-[32px] leading-[48px] text-black px-10">
           world carbon emission rate
         </p>
