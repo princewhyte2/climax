@@ -45,19 +45,19 @@ export default function HomePage() {
           <div className="flex  [@media(max-width:600px)]:flex-col gap-[30px] justify-center items-center ">
             <Image
               src="/charts/radial.svg"
-              height={400}
-              width={400}
+              height={300}
+              width={300}
               alt="Radial chart"
             />
 
-            <div className="text-content w-full  [@media(max-width:600px)]:flex   [@media(max-width:600px)]:flex-col max-w-[600px]  [@media(max-width:600px)]:items-center [@media(max-width:600px)]:justify-center ">
+            <div className="text-content w-full  [@media(max-width:600px)]:flex   [@media(max-width:750px)]:flex-col max-w-[550px]  [@media(max-width:600px)]:items-center [@media(max-width:750px)]:justify-center ">
               <p className="text-green text-sm opacity-7 text-left text-[#85D084]">
                 THE PROBLEM
               </p>
               <h3 className="text-green text-[24px] font-semibold text-left opacity-7 text-[#17B657]  ">
                 Carbon Footprint
               </h3>
-              <p className="text-green max-w-[500px] mt-[10px] w-full text-sm opacity-7 text-left text-[#031B13] [@media(max-width:600px)]:text-center opacity-90">
+              <p className="text-green max-w-[500px] mt-[10px] w-full text-sm opacity-7 text-left text-[#031B13] [@media(max-width:750px)]:text-center opacity-90">
                 carbon footprint, amount of carbon dioxide (CO2) emissions
                 associated with all the activities of a person or other entity
                 (e.g., building, corporation, country, etc.). It includes direct
@@ -74,14 +74,14 @@ export default function HomePage() {
               alt="Radial chart"
             />
 
-            <div className="text-content w-full  [@media(max-width:600px)]:flex   [@media(max-width:600px)]:flex-col max-w-[600px]  [@media(max-width:600px)]:items-center   [@media(max-width:600px)]:justify-center   ">
+            <div className="text-content w-full  [@media(max-width:600px)]:flex   [@media(max-width:750px)]:flex-col max-w-[550px]  [@media(max-width:7500px)]:items-center   [@media(max-width:750px)]:justify-center   ">
               <p className="text-green text-sm opacity-7 text-left text-[#85D084]">
                 YOUR PART
               </p>
               <h3 className="text-green text-[24px] font-semibold text-left opacity-7 text-[#17B657]  ">
                 Carbon Footprint Reduction
               </h3>
-              <p className="text-green max-w-[500px] mt-[10px] w-full text-sm opacity-7 text-left text-[#031B13] opacity-90 [@media(max-width:600px)]:text-center ">
+              <p className="text-green max-w-[500px] mt-[10px] w-full text-sm opacity-7 text-left text-[#031B13] opacity-90 [@media(max-width:750px)]:text-center ">
                 Carbon footprints can be reduced through improving energy
                 efficiency and changing lifestyles and purchasing habits.
                 Switching one’s energy and transportation use can have an impact
