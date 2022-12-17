@@ -23,7 +23,7 @@ const UploadWidget = ({ setImageUrl }: IProps) => {
             setImageUrl(imgURL)
             console.log(imgURL)
           }
-          console.log("error: ", error)
+          console.error("error: ", error)
         },
       )
     }
