@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react";
 
 declare const window: any;
-
-const UploadWidget = () => {
+interface IProps {
+  setImageUrl: (imgUrl: string) => void;
+}
+const UploadWidget = ({ setImageUrl }: IProps) => {
   const cloudinaryRef = useRef<any>();
   const widgetRef = useRef<any>();
 
@@ -21,9 +23,10 @@ const UploadWidget = () => {
         ) => {
           if (!error && result && result.event === "success") {
             const imgURL = result.info.secure_url;
+            setImageUrl(imgURL);
             console.log(imgURL);
           }
-          console.log("error: ", typeof error);
+          console.log("error: ", error);
         }
       );
     }
