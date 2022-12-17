@@ -18,9 +18,8 @@ export default function Navigation() {
             <Link href={"/conversation"}>Join the Conversation</Link>
             <button
               className="capitalize bg-[#17B657] rounded-[15px] w-[187px] h-10"
-              type="button"
-            >
-              donate
+              type="button">
+              Login
             </button>
           </div>
         </div>

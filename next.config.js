@@ -2,9 +2,9 @@
 // const withTM = require("next-transpile-modules")(["@pusher/push-notifications-web"])
 const withPWA = require("next-pwa")({
   dest: "public",
-})
+});
 
-module.exports = withPWA()
+module.exports = withPWA();
 
 // pass the modules you would like to see transpiled
 
