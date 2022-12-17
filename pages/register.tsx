@@ -5,6 +5,7 @@ import { signIn } from "next-auth/react";
 import OpenEye from "../components/icon/OpenEye";
 import authService from "../services/auth";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Register() {
   const [isLoading, setIsLoading] = useState(false);
@@ -165,7 +166,7 @@ export default function Register() {
             <button
               disabled={isLoading}
               type="submit"
-              className="bg-[#17B657] hover:bg-transparent hover:border-[#031B13] border-2 hover:text-[#031B13] mb-[30px] h-[61px] w-full max-w-[350px] rounded-[15px] text-xs font-bold text-white leading-[18px] capitalize "
+              className="bg-[#17B657] hover:bg-transparent hover:border-[#031B13] border-2 hover:text-[#031B13] mb-[20px] h-[61px] w-full max-w-[350px] rounded-[15px] text-xs font-bold text-white leading-[18px] capitalize "
             >
               {isLoading ? "processing..." : "register"}
             </button>
@@ -178,6 +179,12 @@ export default function Register() {
               <GoogleIcon />
               <p>Login with Google</p>
             </button>
+            <p className="mt-1 text-center">
+              Already have an account!{" "}
+              <Link className="hover:text-green-700 underline" href={"/login"}>
+                Login
+              </Link>
+            </p>
           </form>
         </div>
       </div>

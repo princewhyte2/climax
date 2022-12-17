@@ -35,7 +35,7 @@ export default function CarbonCalculationModal({ open, setOpen }: ModalProps) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white px-[59px] py-[39px] text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-[600px]  transform overflow-hidden rounded-2xl bg-white px-[59px] py-[39px] text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
                     className="xl:text-[32px] text-xl font-semibold xl:leading-[48px] mb-5 capitalize text-[#031B13] "

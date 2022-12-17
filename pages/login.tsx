@@ -3,6 +3,7 @@ import { signIn } from "next-auth/react";
 import CloseEye from "../components/icon/CloseEye";
 import GoogleIcon from "../components/icon/GoogleIcon";
 import OpenEye from "../components/icon/OpenEye";
+import Link from "next/link";
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
@@ -93,7 +94,7 @@ export default function Login() {
                 />
               </label>
             </div>
-            <div className="mb-10 ">
+            <div className="mb-5 ">
               <label htmlFor="password">
                 <p className="text-left text-xs font-normal text-black leading-[18px] capitalize">
                   password
@@ -145,7 +146,7 @@ export default function Login() {
             <button
               disabled={isLoading}
               type="submit"
-              className="bg-[#17B657] hover:bg-transparent hover:border-[#031B13] border-2 hover:text-[#031B13] mb-[50px] h-[61px] w-full max-w-[350px] rounded-[15px] text-xs font-bold text-white leading-[18px] capitalize "
+              className="bg-[#17B657] hover:bg-transparent hover:border-[#031B13] border-2 hover:text-[#031B13] mb-[20px] h-[61px] w-full max-w-[350px] rounded-[15px] text-xs font-bold text-white leading-[18px] capitalize "
             >
               {isLoading ? "loading..." : "login"}
             </button>
@@ -158,6 +159,15 @@ export default function Login() {
               <GoogleIcon />
               <p>Login with Google</p>
             </button>
+            <p className="mt-1 text-center">
+              Don't have an account!{" "}
+              <Link
+                className="hover:text-green-700 underline"
+                href={"/register"}
+              >
+                Register
+              </Link>
+            </p>
           </form>
         </div>
       </div>

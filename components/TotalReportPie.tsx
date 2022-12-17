@@ -6,7 +6,7 @@ const data = [
   { name: "Methane", value: 300 },
   { name: "Nitrogen", value: 300 },
 ];
-const COLORS = ["#808080", "#0000FF", "#ADD8E6"];
+const COLORS = ["#FEBD38", "#FE464B", "#A08CFB"];
 
 export default function TotalReportPie() {
   return (

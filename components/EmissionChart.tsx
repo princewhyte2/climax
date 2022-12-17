@@ -72,9 +72,9 @@ export default function EmmissionChart() {
       <YAxis />
       <Tooltip />
       <Legend />
-      <Bar dataKey="Carbondioxide" stackId="a" fill="#808080" />
-      <Bar dataKey="Methane" stackId="a" fill="#0000FF" />
-      <Bar dataKey="Nitrogen" stackId="a" fill="#ADD8E6" />
+      <Bar barSize={30} dataKey="Carbondioxide" stackId="a" fill="#FEBD38" />
+      <Bar dataKey="Methane" stackId="a" fill="#FE464B" />
+      <Bar dataKey="Nitrogen" stackId="a" fill="#A08CFB" />
     </BarChart>
   );
 }
