@@ -16,7 +16,7 @@ export default function EcoShop() {
 
   return (
     <PageWrapper>
-      <div className="hero w-full min-h-[400px] h-[50vh] bg-[#031B13] p-[20px] bg-[url(/bg.jpg)] bg-blend-screen bg-center bg-cover bg-no-repeat  ">
+      <div className="hero w-full min-h-[400px] h-[50vh] bg-[#031B13] p-[20px] bg-[url(/bg.jpg)] bg-blend-soft-light bg-center bg-cover bg-no-repeat  ">
         <ContainerWrapper>
           <PageNav />
           <div className="text-content h-[90%]  flex flex-col gap-[40px] text-white items-center justify-center text-center ">
