@@ -24,7 +24,10 @@ const post = async (req: NextApiRequest, res: NextApiResponse) => {
   where: {
     email: authorId,
   },
-})
+     })
+      if (!user) {
+        return res.status(404).json({ error: 'Something went wrong' })
+      }
       const post = await client.post.create({
         data: {
         //@ts-ignore
