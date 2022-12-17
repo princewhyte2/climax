@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import CarbonCalculationModal from "../components/CarbonCalculationModal";
+import CarbonResult from "../components/CarbonResult";
 import EmmissionChart from "../components/EmissionChart";
 import Footer from "../components/Footer";
 import ArrowRight from "../components/icon/ArrowRight";
@@ -9,6 +10,7 @@ import TotalReportPie from "../components/TotalReportPie";
 
 export default function Dashboard() {
   const [open, setOpen] = useState(false);
+  const [openResult, setOpenResult] = useState(false);
 
   const openCarbonCalc = () => setOpen(true);
   return (
@@ -112,7 +114,12 @@ export default function Dashboard() {
       <div className="bg-[#031B13] w-full">
         <Footer />
       </div>
-      <CarbonCalculationModal open={open} setOpen={setOpen} />
+      <CarbonCalculationModal
+        open={open}
+        setOpen={setOpen}
+        setOpenResult={setOpenResult}
+      />
+      <CarbonResult open={openResult} setOpen={setOpenResult} />
     </main>
   );
 }
