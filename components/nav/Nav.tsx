@@ -26,7 +26,7 @@ export default function PageNav() {
   };
 
   return (
-    <div className="nav flex justify-between items-center w-full ">
+    <div className="nav flex justify-between bg-[#2d3b369e] p-[5px] items-center w-full ">
       <div className="left ">
         <Image
           src="/icons/climax.svg"
@@ -86,8 +86,10 @@ export default function PageNav() {
               </Link>
             </li>
           ))}
-          <PrimaryButton className="max-w-[350px] mt-[30px]">
-            Donate
+          <PrimaryButton
+            onClick={handleNavigate("/login")}
+            className="max-w-[350px] min-h-[60px] mt-[30px]">
+            Login
           </PrimaryButton>
         </ul>
       </div>

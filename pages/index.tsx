@@ -37,7 +37,7 @@ export default function HomePage() {
         </ContainerWrapper>
       </div>
       <div
-        className="body-content flex-1  w-full 
+        className="body-content flex-1 mt-[40px]  w-full 
       ">
         <ContainerWrapper>
           <div className="flex  [@media(max-width:600px)]:flex-col gap-[30px] justify-center items-center ">
@@ -50,15 +50,16 @@ export default function HomePage() {
 
             <div className="text-content w-full  [@media(max-width:600px)]:flex   [@media(max-width:600px)]:flex-col max-w-[600px]  [@media(max-width:600px)]:items-center [@media(max-width:600px)]:justify-center ">
               <p className="text-green text-sm opacity-7 text-left text-[#85D084]">
-                Do your Part
+                THE PROBLEM
               </p>
               <h3 className="text-green text-[24px] font-semibold text-left opacity-7 text-[#17B657]  ">
-                Carbon Reduction
+                Carbon Footprint
               </h3>
               <p className="text-green max-w-[500px] mt-[10px] w-full text-sm opacity-7 text-left text-[#031B13] [@media(max-width:600px)]:text-center opacity-90">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Deleniti, nulla quaerat vitae ad quia assumenda aspernatur, quod
-                illo eum corporis neque, necessitatibus iste.
+                carbon footprint, amount of carbon dioxide (CO2) emissions
+                associated with all the activities of a person or other entity
+                (e.g., building, corporation, country, etc.). It includes direct
+                emissions,
               </p>
             </div>
           </div>
@@ -73,23 +74,24 @@ export default function HomePage() {
 
             <div className="text-content w-full  [@media(max-width:600px)]:flex   [@media(max-width:600px)]:flex-col max-w-[600px]  [@media(max-width:600px)]:items-center   [@media(max-width:600px)]:justify-center   ">
               <p className="text-green text-sm opacity-7 text-left text-[#85D084]">
-                Do your Part
+                YOUR PART
               </p>
               <h3 className="text-green text-[24px] font-semibold text-left opacity-7 text-[#17B657]  ">
-                Carbon Reduction
+                Carbon Footprint Reduction
               </h3>
               <p className="text-green max-w-[500px] mt-[10px] w-full text-sm opacity-7 text-left text-[#031B13] opacity-90 [@media(max-width:600px)]:text-center ">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Deleniti, nulla quaerat vitae ad quia assumenda aspernatur, quod
-                illo eum corporis neque, necessitatibus iste.
+                Carbon footprints can be reduced through improving energy
+                efficiency and changing lifestyles and purchasing habits.
+                Switching one’s energy and transportation use can have an impact
+                on primary carbon footprints.
               </p>
             </div>
           </div>
         </ContainerWrapper>
       </div>
-      <div className="hero w-full min-h-fit bg-[#031B13] p-[20px] bg-[url(/loginBg.png)] bg-blend-overlay bg-center bg-cover bg-no-repeat  ">
+      <div className="hero w-full min-h-fit  mt-[40px]  bg-[#031B13] p-[20px] bg-[url(/loginBg.png)] bg-blend-overlay bg-center bg-cover bg-no-repeat  ">
         <ContainerWrapper>
-          <div className="text-content h-full overflow-x-clip  flex flex-col gap-[40px] text-white items-center justify-center text-center mb-[60px] ">
+          <div className="text-content mt-[40px] h-full overflow-x-clip  flex flex-col gap-[40px] text-white items-center justify-center text-center mb-[60px] ">
             <h3 className="text-white font-bold text-[24px]">
               Climate Stories
             </h3>
@@ -104,7 +106,7 @@ export default function HomePage() {
             className="min-w-[900px]"
             alt="conversations"
           />
-          <div className="w-full flex justify-center mt-[30px]">
+          <div className="w-full flex justify-center mt-[50px] mb-[30px]">
             <PrimaryButton className="w-full max-w-[350px]">
               Join the Conversation
             </PrimaryButton>
